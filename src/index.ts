@@ -1,16 +1,10 @@
-import fs from "fs";
+import matrixData from "./pbom_data/matrix.json";
 import { FlatTechniques, OscarMatrix, Tactic, Technique } from "./types";
 
-let oscarMatrix: OscarMatrix = {};
 let flatTechniques: FlatTechniques = {};
 
 const getOscarMatrix = (): OscarMatrix => {
-  if (Object.keys(oscarMatrix).length === 0) {
-    const data = fs.readFileSync(`${__dirname}/pbom_data/matrix.json`, "utf8");
-    oscarMatrix = JSON.parse(data);
-  }
-
-  return Object.assign({}, oscarMatrix);
+  return Object.assign({}, matrixData as OscarMatrix);
 };
 
 export const getFlatTechniques = (): FlatTechniques => {
